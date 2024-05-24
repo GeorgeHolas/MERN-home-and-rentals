@@ -3,20 +3,20 @@ import React, { useState } from "react";
 import { setLogin } from "../../redux/state";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import './LoginPage.scss';
+import "./LoginPage.scss";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  
+
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Request body:', { email, password });
-    
+    console.log("Request body:", { email, password });
+
     try {
       const response = await fetch("http://localhost:3001/auth/login", {
         method: "POST",
@@ -31,17 +31,16 @@ const LoginPage = () => {
 
       /* Get data after fething*/
       const loggedIn = await response.json();
-        if (loggedIn) {
-          console.log('Logged in user data:', loggedIn.user);
-          dispatch (
-            setLogin({
-              user: loggedIn.user,
-              token: loggedIn.token,
-            })
-          )
-          navigate("/")
-        }
-
+      if (loggedIn) {
+        console.log("Logged in user data:", loggedIn.user);
+        dispatch(
+          setLogin({
+            user: loggedIn.user,
+            token: loggedIn.token,
+          })
+        );
+        navigate("/");
+      }
     } catch (err) {
       console.log("Login failed", err.message);
     }
@@ -58,12 +57,12 @@ const LoginPage = () => {
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-          <input 
-            type="password" 
+          <input
+            type="password"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            required 
+            required
           />
           <button type="submit">Login</button>
         </form>

@@ -22,8 +22,6 @@ const RegisterPage = () => {
     })
   }
 
-  console.log(formData);
-
   const [passwordMatch, setPasswordMatch ] = useState(true);
 
   useEffect(() => {

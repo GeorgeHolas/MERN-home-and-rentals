@@ -1,3 +1,4 @@
+// ListingCard.jsx
 import { useState } from "react";
 import "./ListingCard.scss";
 import {
@@ -9,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setWishList } from "../../redux/state";
 
+// TODO: Add to wishlist
 const ListingCard = ({
   listingId,
   creator,
@@ -24,7 +26,6 @@ const ListingCard = ({
   totalPrice,
   booking,
 }) => {
-
   /* Slider for images */
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -49,19 +50,38 @@ const ListingCard = ({
   const isLiked = wishList?.find((item) => item?._id === listingId);
 
   const patchWishList = async () => {
+    if (!user || !listingId) {
+      console.error("User or listingId is missing");
+      return;
+    }
+
     if (user?._id !== creator._id) {
-    const response = await fetch(
-      `http://localhost:3001/users/${user?._id}/${listingId}`,
-      {
-        method: "PATCH",
-        header: {
-          "Content-Type": "application/json",
-        },
+      try {
+        const response = await fetch(
+          `http://localhost:3001/users/${user._id}/${listingId}`,
+          {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (!response.ok) {
+          console.error(
+            "Failed to patch wish list:",
+            response.status,
+            response.statusText
+          );
+          return;
+        }
+
+        const data = await response.json();
+        dispatch(setWishList(data.wishList));
+      } catch (error) {
+        console.error("Error patching wish list:", error);
       }
-    );
-    const data = await response.json();
-    dispatch(setWishList(data.wishList));
-  } else { return }
+    }
   };
 
   return (

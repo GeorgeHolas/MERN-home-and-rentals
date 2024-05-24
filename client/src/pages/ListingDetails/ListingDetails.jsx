@@ -1,3 +1,4 @@
+// ListingDetails.jsx
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { facilities } from "../../data";
@@ -130,7 +131,7 @@ const ListingDetails = () => {
             <h3>
               Hosted by {listing.creator.firstName} {listing.creator.lastName}
             </h3>
-           )}
+          )}
         </div>
         <hr />
 

@@ -1,3 +1,4 @@
+// HomePage.jsx
 import React from 'react'
 import Navbar from '../../components/Navbar/Navbar'
 import Slide from '../../components/Slide/Slide' 

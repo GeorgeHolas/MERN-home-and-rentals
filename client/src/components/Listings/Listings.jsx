@@ -10,7 +10,7 @@ import "./Listings.scss";
 const Listings = () => {
   const dispatch = useDispatch();
   const [loading, setIsLoading] = useState(true);
-  
+
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   const listings = useSelector((state) => state.listings);
@@ -45,7 +45,9 @@ const Listings = () => {
       <div className="category-list">
         {categories?.map((category, index) => (
           <div
-            className={`category ${category.label === selectedCategory ? "selected" : ""}`}
+            className={`category ${
+              category.label === selectedCategory ? "selected" : ""
+            }`}
             key={index}
             onClick={() => setSelectedCategory(category.label)}
           >
@@ -61,18 +63,22 @@ const Listings = () => {
         <div className="listings">
           {listings.map(
             (
-              {_id,
-              creator,
-              listingPhotoPaths,
-              city,
-              province,
-              country,
-              category,
-              type,
-              price,
-              booking=false
-            }) => (
+              {
+                _id,
+                creator,
+                listingPhotoPaths,
+                city,
+                province,
+                country,
+                category,
+                type,
+                price,
+                booking = false,
+              },
+              index
+            ) => (
               <ListingCard
+                key={index}
                 listingId={_id}
                 creator={creator}
                 listingPhotoPaths={listingPhotoPaths}

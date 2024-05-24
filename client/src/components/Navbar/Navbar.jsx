@@ -1,24 +1,24 @@
-import React from 'react'
-import { IconButton } from '@mui/material'
-import { Search, Person, Menu } from '@mui/icons-material'
-import variables from '../../../src/styles/variables.scss'
-import { useState } from'react';
-import { useSelector, useDispatch } from 'react-redux';
-import './Navbar.scss';
+// Navbar.jsx
+import React from "react";
+import { IconButton } from "@mui/material";
+import { Search, Person, Menu } from "@mui/icons-material";
+import variables from "../../../src/styles/variables.scss";
+import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import "./Navbar.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { setLogout } from "../../redux/state";
 
-
 const Navbar = () => {
   const [dropdownMenu, setDropdownMenu] = useState(false);
+
+  const [search, setSearch] = useState("");
 
   const user = useSelector((state) => state.user);
 
   const dispatch = useDispatch();
 
-  const [search, setSearch] = useState("")
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <div className="navbar">
@@ -35,7 +35,9 @@ const Navbar = () => {
         />
         <IconButton
           disabled={search === ""}
-          onClick={() => {navigate(`/properties/search/${search}`)}}
+          onClick={() => {
+            navigate(`/properties/search/${search}`);
+          }}
         >
           <Search sx={{ color: variables.blue }} />
         </IconButton>
@@ -44,11 +46,11 @@ const Navbar = () => {
       <div className="navbar_right">
         {user ? (
           <a href="/create-listing" className="host">
-            Add your property
+            List Your Property for Rent
           </a>
         ) : (
           <a href="/login" className="host">
-            Add your property
+            List Your Property for Rent
           </a>
         )}
 
@@ -84,7 +86,7 @@ const Navbar = () => {
             <Link to={`/${user._id}/wishList`}>Wishlist</Link>
             <Link to={`/${user._id}/properties`}>Properties</Link>
             <Link to={`/${user._id}/reservations`}>Reservations</Link>
-            <Link to="/create-listing">Add your propety</Link>
+            <Link to="/create-listing">Become a Host</Link>
 
             <Link
               to="/login"
