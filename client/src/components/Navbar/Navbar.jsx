@@ -31,6 +31,8 @@ const Navbar = () => {
           type="text"
           placeholder="Search ..."
           value={search}
+          id="searchInput"
+          name="searchInput"
           onChange={(e) => setSearch(e.target.value)}
         />
         <IconButton

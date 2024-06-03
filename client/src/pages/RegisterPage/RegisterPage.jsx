@@ -56,6 +56,7 @@ const RegisterPage = () => {
           <input
             placeholder='First Name'
             name='firstName'
+            id='firstName'
             value={formData.firstName}
             onChange={handleChange}
             required
@@ -63,6 +64,7 @@ const RegisterPage = () => {
           <input
             placeholder='Last Name'
             name='lastName'
+            id='lastName'
             value={formData.lastName}
             onChange={handleChange}
             required
@@ -70,6 +72,7 @@ const RegisterPage = () => {
           <input
             placeholder='Email'
             name='email'
+            id='email'
             type='email'
             value={formData.email}
             onChange={handleChange}
@@ -79,6 +82,7 @@ const RegisterPage = () => {
           <input
             placeholder='Password'
             name='password'
+            id='password'
             type='password'
             value={formData.password}
             onChange={handleChange}
@@ -88,6 +92,7 @@ const RegisterPage = () => {
           <input
             placeholder='Confirm Password'
             name='confirmPassword'
+            id='confirmPassword'
             type='password'
             value={formData.confirmPassword}
             onChange={handleChange}
@@ -100,15 +105,15 @@ const RegisterPage = () => {
           )}
 
           <input 
-            id='image'
-            type='file'
+            id='profileImage'
             name='profileImage'
-            accept='image/'
+            type='file'
+            accept='image/*'
             style={{ display: 'none' }}
             onChange={handleChange}
             required
             />
-           <label htmlFor='image'>
+           <label htmlFor='profileImage'>
              <img src='/resources/profilePlaceholder.webp' 
              alt='profilePlaceholder' />
              <p>Upload a profile image</p>

@@ -38,8 +38,6 @@ const Listings = () => {
     getFeedListings();
   }, [selectedCategory]);
 
-  console.log(listings);
-
   return (
     <>
       <div className="category-list">

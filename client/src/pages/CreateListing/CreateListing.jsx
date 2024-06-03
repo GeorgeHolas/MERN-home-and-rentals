@@ -191,6 +191,7 @@ const CreateListing = () => {
                   type="text"
                   placeholder="Street Address"
                   name="streetAddress"
+                  id="streetAddress"
                   value={formLocation.streetAddress}
                   onChange={handleChangeLocation}
                   required
@@ -205,6 +206,7 @@ const CreateListing = () => {
                   type="text"
                   placeholder="Apt, Suite, etc. (if applicable)"
                   name="aptSuite"
+                  id="aptSuite"
                   value={formLocation.aptSuite}
                   onChange={handleChangeLocation}
                   required
@@ -216,6 +218,7 @@ const CreateListing = () => {
                   type="text"
                   placeholder="City"
                   name="city"
+                  id="city"
                   value={formLocation.city}
                   onChange={handleChangeLocation}
                   required
@@ -230,6 +233,7 @@ const CreateListing = () => {
                   type="text"
                   placeholder="Province"
                   name="province"
+                  id="province"
                   value={formLocation.province}
                   onChange={handleChangeLocation}
                   required
@@ -241,6 +245,7 @@ const CreateListing = () => {
                   type="text"
                   placeholder="Country"
                   name="country"
+                  id="country"
                   value={formLocation.country}
                   onChange={handleChangeLocation}
                   required
@@ -440,7 +445,8 @@ const CreateListing = () => {
                           );
                         })}
                         <input
-                          id="image"
+                          id="listingPhotos"
+                          name="listingPhotos"
                           type="file"
                           style={{ display: "none" }}
                           accept="image/*"
