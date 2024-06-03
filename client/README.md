@@ -12,7 +12,7 @@ HomeHoppers is a web application that allows users to search, book, and manage h
 ### Installation
 
 1. Clone the repository:
-git clone https://github.com/your-username/homehoppers.git
+git clone https://github.com/GeorgeHolas/homehoppers.git
 
 
 2. Navigate to the project directory:
