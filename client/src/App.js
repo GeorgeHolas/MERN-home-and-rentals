@@ -1,38 +1,42 @@
 // App.js
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import HomePage from "./pages/HomePage/HomePage";
-import RegisterPage from "./pages/RegisterPage/RegisterPage";
-import LoginPage from "./pages/LoginPage/LoginPage";
-import CreateListing from "./pages/CreateListing/CreateListing";
-import ListingDetails from "./pages/ListingDetails/ListingDetails";
-import TripList from "./pages/TripList/TripList";
-import WishList from "./pages/WishList/WishList";
-import PropertyList from "./pages/PropertyList/PropertyList";
-import ReservationList from "./pages/ReservationList/ReservationList";
-import CategoryPage from "./pages/CategoryPage/CategoryPage";
-import SearchPage from "./pages/SearchPage/SearchPage";
+import React, { lazy, Suspense } from "react";
+
+const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
+const RegisterPage = lazy(() => import("./pages/RegisterPage/RegisterPage"));
+const LoginPage = lazy(() => import("./pages/LoginPage/LoginPage"));
+const CreateListing = lazy(() => import("./pages/CreateListing/CreateListing"));
+const ListingDetails = lazy(() => import("./pages/ListingDetails/ListingDetails"));
+const TripList = lazy(() => import("./pages/TripList/TripList"));
+const WishList = lazy(() => import("./pages/WishList/WishList"));
+const PropertyList = lazy(() => import("./pages/PropertyList/PropertyList"));
+const ReservationList = lazy(() => import("./pages/ReservationList/ReservationList"));
+const CategoryPage = lazy(() => import("./pages/CategoryPage/CategoryPage"));
+const SearchPage = lazy(() => import("./pages/SearchPage/SearchPage"));
 
 function App() {
   return (
     <div>
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/create-listing" element={<CreateListing />} />
-          <Route path="/properties/:listingId" element={<ListingDetails />} />
-          <Route
-            path="/properties/category/:category"
-            element={<CategoryPage />}
-          />
-          <Route path="/properties/search/:search" element={<SearchPage />} />
-          <Route path="/:userId/trips" element={<TripList />} />
-          <Route path="/:userId/wishList" element={<WishList />} />
-          <Route path="/:userId/properties" element={<PropertyList />} />
-          <Route path="/:userId/reservations" element={<ReservationList />} />
-        </Routes>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/create-listing" element={<CreateListing />} />
+            <Route path="/properties/:listingId" element={<ListingDetails />} />
+            <Route
+              path="/properties/category/:category"
+              element={<CategoryPage />}
+            />
+            <Route path="/properties/search/:search" element={<SearchPage />} />
+            <Route path="/:userId/trips" element={<TripList />} />
+            <Route path="/:userId/wishList" element={<WishList />} />
+            <Route path="/:userId/properties" element={<PropertyList />} />
+            <Route path="/:userId/reservations" element={<ReservationList />} />
+          </Routes>
+        </Suspense>
       </BrowserRouter>
     </div>
   );
