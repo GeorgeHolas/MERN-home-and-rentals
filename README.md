@@ -19,22 +19,22 @@ git clone https://github.com/GeorgeHolas/MERN-home-and-rentals-app
 cd MERN-home-and-rentals-app
 
 3. Install dependencies for the client and server:
-cd client
-npm install
-cd ../server
-npm install
+- cd client
+- npm install
+- cd ../server
+- npm install
 
 ### Running the Application
 
 1. Start the server:
-cd server
-npm start
+- cd server
+- npm start
 
 The server will start running on `http://localhost:3001`.
 
 2. Start the client (in a separate terminal):
-cd client
-npm start
+- cd client
+- npm start
 
 
 The client will start running on `http://localhost:3000`.
