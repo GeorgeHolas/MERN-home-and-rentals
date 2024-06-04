@@ -12,29 +12,29 @@ HomeHoppers is a web application that allows users to search, book, and manage h
 ### Installation
 
 1. Clone the repository:
-git clone https://github.com/GeorgeHolas/homehoppers.git
+git clone https://github.com/GeorgeHolas/MERN-home-and-rentals-app
 
 
 2. Navigate to the project directory:
-cd homehoppers
+cd MERN-home-and-rentals-app
 
 3. Install dependencies for the client and server:
-cd client
-npm install
-cd ../server
-npm install
+- cd client
+- npm install
+- cd ../server
+- npm install
 
 ### Running the Application
 
 1. Start the server:
-cd server
-npm start
+- cd server
+- npm start
 
-The server will start running on `http://localhost:5000`.
+The server will start running on `http://localhost:3001`.
 
 2. Start the client (in a separate terminal):
-cd client
-npm start
+- cd client
+- npm start
 
 
 The client will start running on `http://localhost:3000`.
