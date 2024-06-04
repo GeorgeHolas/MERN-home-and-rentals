@@ -1,5 +1,5 @@
 // Listings.jsx
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { categories } from "../../data";
 import ListingCard from "../ListingCard/ListingCard";
 import Loader from "../Loader/Loader";
@@ -15,7 +15,7 @@ const Listings = () => {
 
   const listings = useSelector((state) => state.listings);
 
-  const getFeedListings = async () => {
+  const getFeedListings = useCallback(async () => {
     try {
       const response = await fetch(
         selectedCategory !== "All"
@@ -25,18 +25,18 @@ const Listings = () => {
           method: "GET",
         }
       );
-
+  
       const data = await response.json();
       dispatch(setListings({ listings: data }));
       setIsLoading(false);
     } catch (err) {
       console.log("Fetch listings failed", err.message);
     }
-  };
-
+  }, [selectedCategory, dispatch]);
+  
   useEffect(() => {
     getFeedListings();
-  }, [selectedCategory]);
+  }, [getFeedListings]);
 
   return (
     <>
