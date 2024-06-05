@@ -21,7 +21,7 @@ cd MERN-home-and-rentals-app
 3. Install dependencies for the client and server:
 - cd client
 - npm install
-- cd ../server
+- cd server
 - npm install
 
 ### Running the Application
