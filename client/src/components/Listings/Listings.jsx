@@ -23,6 +23,7 @@ const Listings = () => {
           : "http://localhost:3001/properties",
         {
           method: "GET",
+          credentials: 'include',
         }
       );
   

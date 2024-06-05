@@ -15,7 +15,6 @@ const LoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Request body:", { email, password });
 
     try {
       const response = await fetch("http://localhost:3001/auth/login", {
@@ -32,7 +31,6 @@ const LoginPage = () => {
       /* Get data after fething*/
       const loggedIn = await response.json();
       if (loggedIn) {
-        console.log("Logged in user data:", loggedIn.user);
         dispatch(
           setLogin({
             user: loggedIn.user,
