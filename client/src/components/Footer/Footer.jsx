@@ -1,5 +1,5 @@
 // Footer.jsx
-import { LocationOn, LocalPhone, Email } from "@mui/icons-material"
+import { LocalPhone, Email } from "@mui/icons-material"
 import './Footer.scss';;
 
 const Footer = () => {
