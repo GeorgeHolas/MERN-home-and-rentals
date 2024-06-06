@@ -55,6 +55,7 @@ const LoginPage = () => {
             onChange={(e) => setEmail(e.target.value)}
             id="email"
             name="email"
+            autoComplete="email"
             required
           />
           <input
@@ -64,6 +65,7 @@ const LoginPage = () => {
             onChange={(e) => setPassword(e.target.value)}
             id="password"
             name="password"
+            autoComplete="current-password"
             required
           />
           <button type="submit">Login</button>

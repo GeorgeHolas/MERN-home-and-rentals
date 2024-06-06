@@ -10,7 +10,15 @@ const listingRoutes = require("./routes/Listing");
 const bookingRoutes = require("./routes/booking");
 const userRoutes = require("./routes/user");
 
-app.use(cors());
+const allowedOrigins = ['https://your-https://homehoppersrental86-jiri-holas-projects.vercel.app.com', 'http://localhost:3000'];
+
+app.use(
+  cors({
+    origin: allowedOrigins,
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 app.use(express.static("public"));
 

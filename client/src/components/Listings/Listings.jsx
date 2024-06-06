@@ -9,20 +9,21 @@ import "./Listings.scss";
 
 const Listings = () => {
   const dispatch = useDispatch();
-  const [loading, setIsLoading] = useState(true);
-
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [loading, setIsLoading] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
   const listings = useSelector((state) => state.listings);
 
-  const getFeedListings = useCallback(async () => {
+  const getFeedListings = useCallback(async (category) => {
+    setIsLoading(true);
     try {
       const response = await fetch(
-        selectedCategory !== "All"
-          ? `http://localhost:3001/properties?category=${selectedCategory}`
+        category !== "All"
+          ? `http://localhost:3001/properties?category=${category}`
           : "http://localhost:3001/properties",
         {
           method: "GET",
+          credentials: 'include',
         }
       );
   
@@ -31,12 +32,15 @@ const Listings = () => {
       setIsLoading(false);
     } catch (err) {
       console.log("Fetch listings failed", err.message);
+      setIsLoading(false);
     }
-  }, [selectedCategory, dispatch]);
+  }, [dispatch]);
   
   useEffect(() => {
-    getFeedListings();
-  }, [getFeedListings]);
+    if (selectedCategory !== null) {
+      getFeedListings(selectedCategory);
+    }
+  }, [selectedCategory, getFeedListings]);
 
   return (
     <>
@@ -55,42 +59,44 @@ const Listings = () => {
         ))}
       </div>
 
-      {loading ? (
-        <Loader />
-      ) : (
-        <div className="listings">
-          {listings.map(
-            (
-              {
-                _id,
-                creator,
-                listingPhotoPaths,
-                city,
-                province,
-                country,
-                category,
-                type,
-                price,
-                booking = false,
-              },
-              index
-            ) => (
-              <ListingCard
-                key={index}
-                listingId={_id}
-                creator={creator}
-                listingPhotoPaths={listingPhotoPaths}
-                city={city}
-                province={province}
-                country={country}
-                category={category}
-                type={type}
-                price={price}
-                booking={booking}
-              />
-            )
-          )}
-        </div>
+      {selectedCategory !== null && (
+        loading ? (
+          <Loader />
+        ) : (
+          <div className="listings">
+            {listings.map(
+              (
+                {
+                  _id,
+                  creator,
+                  listingPhotoPaths,
+                  city,
+                  province,
+                  country,
+                  category,
+                  type,
+                  price,
+                  booking = false,
+                },
+                index
+              ) => (
+                <ListingCard
+                  key={index}
+                  listingId={_id}
+                  creator={creator}
+                  listingPhotoPaths={listingPhotoPaths}
+                  city={city}
+                  province={province}
+                  country={country}
+                  category={category}
+                  type={type}
+                  price={price}
+                  booking={booking}
+                />
+              )
+            )}
+          </div>
+        )
       )}
     </>
   );
