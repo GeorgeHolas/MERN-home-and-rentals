@@ -17,15 +17,12 @@ const Listings = () => {
 
   const getFeedListings = useCallback(async () => {
     try {
-      const backendUrl = process.env.NODE_ENV === 'production'
-        ? 'homehoppers-jiri-holas-projects.vercel.app' // Replace with your backend server URL
-        : 'http://localhost:3001';
-  
       const response = await fetch(
-        `${backendUrl}/properties${selectedCategory !== 'All' ? `?category=${selectedCategory}` : ''}`,
+        selectedCategory !== "All"
+          ? `http://localhost:3001/properties?category=${selectedCategory}`
+          : "http://localhost:3001/properties",
         {
-          method: 'GET',
-          credentials: 'include',
+          method: "GET",
         }
       );
   
@@ -33,7 +30,7 @@ const Listings = () => {
       dispatch(setListings({ listings: data }));
       setIsLoading(false);
     } catch (err) {
-      console.log('Fetch listings failed', err.message);
+      console.log("Fetch listings failed", err.message);
     }
   }, [selectedCategory, dispatch]);
   
