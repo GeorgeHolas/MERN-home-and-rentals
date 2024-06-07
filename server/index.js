@@ -26,8 +26,6 @@ app.use((req, res, next) => {
   next();
 });
 
-
-
 app.use(
   cors({
     origin: allowedOrigins,

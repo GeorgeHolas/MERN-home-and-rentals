@@ -23,7 +23,7 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <a href="/">
-        <img src="/resources/logo.webp" alt="logo" />
+        <img src="/resources/Logo.webp" alt="logo" />
       </a>
 
       <div className="navbar_search">
