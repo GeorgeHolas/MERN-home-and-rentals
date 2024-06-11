@@ -36,6 +36,11 @@ app.use(
 app.use(express.json());
 app.use(express.static("public"));
 
+// Add this route handler
+app.get("/", (req, res) => {
+  res.send("Hello World");
+});
+
 /* Routes */
 app.use("/auth", authRoutes);
 app.use("/properties", listingRoutes);
