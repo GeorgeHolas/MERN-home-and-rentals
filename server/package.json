@@ -13,7 +13,6 @@
   "name": "server",
   "version": "1.0.0",
   "main": "index.js",
-  "proxy": "http://localhost:3001",
   "devDependencies": {},
   "scripts": {
     "start": "node api/index.js"
