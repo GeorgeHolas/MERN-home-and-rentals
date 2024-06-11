@@ -5,10 +5,10 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv").config();
 const cors = require("cors");
 
-const authRoutes = require("./routes/auth");
-const listingRoutes = require("./routes/Listing");
-const bookingRoutes = require("./routes/booking");
-const userRoutes = require("./routes/user");
+const authRoutes = require("../routes/auth");
+const listingRoutes = require("../routes/Listing");
+const bookingRoutes = require("../routes/booking");
+const userRoutes = require("../routes/user");
 
 const allowedOrigins = ['https://homehoppersrental86-jiri-holas-projects.vercel.app', 'http://localhost:3000'];
 
