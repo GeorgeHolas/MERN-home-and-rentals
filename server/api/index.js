@@ -36,16 +36,16 @@ app.use(
 app.use(express.json());
 app.use(express.static("public"));
 
-// Add this route handler
-app.get("/api", (req, res) => {
-  res.send("Hello World");
-});
-
 /* Routes */
 app.use("/auth", authRoutes);
 app.use("/properties", listingRoutes);
 app.use("/bookings", bookingRoutes);
 app.use("/users", userRoutes);
+
+// Add this route handler
+app.get("/", (req, res) => {
+  res.send("Hello World");
+});
 
 /* mongoose connection */
 const PORT = 3001;
@@ -64,5 +64,3 @@ mongoose
   .catch((err) => {
     console.error("MongoDB connection error:", err);
   });
-
-  module.exports = app;
