@@ -10,7 +10,7 @@ const listingRoutes = require("../routes/Listing");
 const bookingRoutes = require("../routes/booking");
 const userRoutes = require("../routes/user");
 
-const allowedOrigins = ['https://homehoppersclient-jiri-holas-projects.vercel.app', 'http://localhost:3000'];
+const allowedOrigins = ['https://homehoppersrental86-jiri-holas-projects.vercel.app/', 'http://localhost:3000'];
 
 app.use((req, res, next) => {
   const origin = req.headers.origin;
