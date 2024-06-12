@@ -10,7 +10,7 @@ const listingRoutes = require("../routes/Listing");
 const bookingRoutes = require("../routes/booking");
 const userRoutes = require("../routes/user");
 
-const allowedOrigins = ['https://homehoppersrental86-jiri-holas-projects.vercel.app/', 'http://localhost:3000'];
+const allowedOrigins = ['https://homehoppersrental86-jiri-holas-projects.vercel.app', 'http://localhost:3000'];
 
 app.use((req, res, next) => {
   const origin = req.headers.origin;
@@ -42,13 +42,13 @@ app.use("/properties", listingRoutes);
 app.use("/bookings", bookingRoutes);
 app.use("/users", userRoutes);
 
-// Add this route handler
+// Add this route handler testing the server
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
 
 /* mongoose connection */
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 mongoose
   .connect(process.env.MONGO_URL, {
     dbName: "HomeHoppers",
